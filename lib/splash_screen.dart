@@ -15,11 +15,13 @@ class SplashScreen extends StatelessWidget {
     return AnimatedSplashScreen(splash: Column(
       children: [
         Center(
-          child: LottieBuilder.asset('assets/expense_splash.json'),
+          child: Transform.translate(offset: Offset(5,0),
+          child: LottieBuilder.asset('assets/expense_splash.json',width: 240,)),
         )
       ],
     ), nextScreen: AnimatedGradientBackground(child: ExpenseTracker()),
-    splashIconSize: 400,
-    backgroundColor: Color(0xF3AAC4FF),);
+    splashIconSize: 255,
+    duration: 1500,
+    backgroundColor: Color(0xFFAAC4FF),);
   }
 }

@@ -72,7 +72,7 @@ class _ExpenseTrackerState extends State<ExpenseTracker> {
         key: GlobalKey(),
         value: selectedMode,
         alignment: AlignmentDirectional.bottomEnd,
-        hint: Text('Select Payment Mode'),
+        hint: Align(alignment:AlignmentDirectional.centerStart, child: Text('Select Payment Mode')),
         isExpanded: true,
         buttonStyleData: ButtonStyleData(
           // height: 50,
@@ -186,6 +186,7 @@ class _ExpenseTrackerState extends State<ExpenseTracker> {
                       [];
               modes.add(controller.text);
               paymentBox.put('modes', modes);
+              selectedMode = controller.text;
               setState(() {});
               Navigator.pop(context);
             },

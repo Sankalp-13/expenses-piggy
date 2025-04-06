@@ -1,12 +1,12 @@
 package com.example.expenses
 
-import android.app.PendingIntent
+import android.app.PendingIntent // Add this import
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.content.ComponentName // Add this import
 import android.content.Context
 import android.content.Intent
-import android.util.Log
-import android.widget.RemoteViews
+import android.widget.RemoteViews // Add this import
 
 class ExpenseWidgetProvider : AppWidgetProvider() {
 
@@ -15,13 +15,8 @@ class ExpenseWidgetProvider : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
-        Log.d("ExpenseWidgetProvider", "onUpdate called")
         for (appWidgetId in appWidgetIds) {
-            try {
-                updateAppWidget(context, appWidgetManager, appWidgetId)
-            } catch (e: Exception) {
-                Log.e("ExpenseWidgetProvider", "Error updating widget $appWidgetId", e)
-            }
+            updateAppWidget(context, appWidgetManager, appWidgetId)
         }
     }
 
@@ -30,19 +25,11 @@ class ExpenseWidgetProvider : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetId: Int
     ) {
-        Log.d("ExpenseWidgetProvider", "Updating widget $appWidgetId")
         val views = RemoteViews(context.packageName, R.layout.expense_widget)
 
-        // Set up the intent to handle the "Add Expense" button click
-        val intent = Intent(context, ExpenseWidgetService::class.java)
-        intent.action = "ADD_EXPENSE"
-
-        // Add sample data to the intent (for testing)
-        intent.putExtra("amount", "100") // Replace with actual amount
-        intent.putExtra("reason", "Food") // Replace with actual reason
-
-        // Use FLAG_IMMUTABLE for Android 12 and above
-        val pendingIntent = PendingIntent.getService(
+        // Set up the intent to open the InputActivity
+        val intent = Intent(context, InputActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(
             context,
             0,
             intent,
@@ -51,12 +38,7 @@ class ExpenseWidgetProvider : AppWidgetProvider() {
 
         views.setOnClickPendingIntent(R.id.add_expense_button, pendingIntent)
 
-        // Update the widget with sample data
-        views.setTextViewText(R.id.amount_text, "Amount: 100")
-        views.setTextViewText(R.id.reason_text, "Reason: Food")
-
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views)
-        Log.d("ExpenseWidgetProvider", "Widget $appWidgetId updated successfully")
     }
 }

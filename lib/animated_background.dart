@@ -11,9 +11,9 @@ class AnimatedGradientBackground extends StatefulWidget {
 
 class _AnimatedGradientBackgroundState extends State<AnimatedGradientBackground> {
   List<List<Color>> gradientColors = [
-    [Color(0xFFAAC4FF), Color(0xFFF3A6A6)], // Blue → Pink
-    [Color(0xFFFDE2E4), Color(0xFFAAC4FF)], // Pink → Blue
-    [Color(0xFFAAC4FF), Color(0xFFE3EAFD)], // Blue → Lighter Blue
+    [Color(0xFFAAC4FF), Color(0xFFFFE9E9)], // Blue → Pink
+    [Color(0xFFE2E7FD), Color(0xFFAAC4FF)], // Pink → Blue
+    [Color(0xFFAAC4FF), Color(0xFFD8E1FA)], // Blue → Lighter Blue
   ];
 
   int currentIndex = 0;

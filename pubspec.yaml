@@ -43,15 +43,61 @@ dependencies:
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.14.3
+  flutter_native_splash:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter_launcher_icons:
+  android: true
+  image_path: "assets/img_splash.png"
+  background_color: "#AAC4FF"
+  adaptive_icon_foreground: "assets/img_splash.png"
+  adaptive_icon_background: "#AAC4FF"
+#  min_sdk_android: 21 # android min sdk min:16, default 21
+
+flutter_native_splash:
+  background_image: "assets/image_splash.png"
+  image: assets/image_splash.png
+
+  # Splash screen background color.
+  color: "#AAC4FF"
+  # From Android 12 onwards, the splash screen is handled differently than in previous versions.
+  # Please visit https://developer.android.com/guide/topics/ui/splash-screen
+  # Following are specific parameters for Android 12+.
+  android_12:
+    image: assets/image_splash.png
+    color: "#AAC4FF"
+  # The image parameter sets the splash screen icon image.  If this parameter is not specified,
+  # the app's launcher icon will be used instead.
+  # Please note that the splash screen will be clipped to a circle on the center of the screen.
+  # App icon with an icon background: This should be 960×960 pixels, and fit within a circle
+  # 640 pixels in diameter.
+  # App icon without an icon background: This should be 1152×1152 pixels, and fit within a circle
+  # 768 pixels in diameter.  To fit a 1152x1152 image within a circle with a 768 diameter, simply
+  # ensure that the most important design elements of your image are placed within a circular area
+  # with a 768 diameter at the center of the 1152x1152 canvas.
+
+  # App icon background color.
+  #icon_background_color: "#111111"
+
+  # The branding property allows you to specify an image used as branding in the splash screen.
+  #branding: assets/dart.png
+
+  # The image_dark, color_dark, icon_background_color_dark, and branding_dark set values that
+  # apply when the device is in dark mode. If they are not specified, the app will use the
+  # parameters from above.  If there is no parameter above, the app will use the light mode values.
+  #image_dark: assets/android12splash-invert.png
+  #color_dark: "#042a49"
+  #icon_background_color_dark: "#eeeeee"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^5.0.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -65,9 +111,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
